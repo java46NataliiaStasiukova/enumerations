@@ -15,17 +15,15 @@ public class Length implements Comparable<Length> {
 	 * 10m == 10000mm
 	 */
 	public boolean equals(Object obj) {
-		//TODO
-		
-		
-		
-		return false;
+		Length o = (Length) obj;
+		return this.compareTo(o) == 0;
+		//return Float.compare(this.unit.value * this.amount, o.unit.value * o.amount) == 0;
 	}
 
 	@Override
 	public int compareTo(Length o) {
-		//TODO
-		return 0;
+
+		return Float.compare(this.unit.value * this.amount, o.unit.value * o.amount);
 	}
 	/**
 	 * 
@@ -34,8 +32,8 @@ public class Length implements Comparable<Length> {
 	 * convert(LengthUnit.M) returns Length in meters 
 	 */
 	public Length convert(LengthUnit unit) {
-		//TODO
-		return  null;
+
+		return  new Length(this.amount / unit.value * this.unit.value, unit);
 	}
 	@Override
 	/**
@@ -43,8 +41,8 @@ public class Length implements Comparable<Length> {
 	 * Example: 20M (string expression of Length object designed 20 meters)
 	 */
 	public String toString() {
-		//TODO
-		return null;
+
+		return Integer.toString((int)this.amount).concat(this.unit.toString());
 	}
 
 	public float getAmount() {
