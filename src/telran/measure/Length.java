@@ -15,9 +15,16 @@ public class Length implements Comparable<Length> {
 	 * 10m == 10000mm
 	 */
 	public boolean equals(Object obj) {
-		Length o = (Length) obj;
-		return this.compareTo(o) == 0;
-		//return Float.compare(this.unit.value * this.amount, o.unit.value * o.amount) == 0;
+		if(this == obj) {
+			return true;
+		}
+		if(obj == null) {
+			return false;
+		}
+		if(! (obj instanceof Length)) {
+			return false;
+		}
+		return this.compareTo((Length) obj) == 0;
 	}
 
 	@Override
