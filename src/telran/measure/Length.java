@@ -48,8 +48,11 @@ public class Length implements Comparable<Length> {
 	 * Example: 20M (string expression of Length object designed 20 meters)
 	 */
 	public String toString() {
-
-		return Integer.toString((int)this.amount).concat(this.unit.toString());
+		String amountStr = Float.toString(amount);
+		if (amountStr.matches(".*\\.0+")) {
+			amountStr = amountStr.replaceAll("\\.0+", "");
+		}
+		return amountStr + unit.toString();
 	}
 
 	public float getAmount() {
